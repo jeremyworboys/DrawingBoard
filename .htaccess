@@ -1,0 +1,17 @@
+
+# Prevent display of direcotry indexes
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+	Options +FollowSymlinks
+	RewriteEngine On
+
+	# Force users to no www. url
+	RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+	RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+	# Send everything back to index.php
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d 
+	RewriteRule ^(.*)$ ./index.php/$1 [L]
+</IfModule>
