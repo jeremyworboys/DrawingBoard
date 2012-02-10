@@ -48,5 +48,25 @@ if (!isset($config)) $config = array();
 /**
  * This is the name of controller that is called if one is not passed in the
  * request (URI).
+ * 
+ * Default: index
  */
 $config['default_controller'] = 'index';
+
+/**
+ * This is the name of the action that is called if one is not passed in the
+ * request (URI).
+ * 
+ * Default: index
+ */
+$config['default_action'] = 'index';
+
+/**
+ * This is appended to the end of an requested action before it is called.
+ * 
+ * If this is an empty string nothing will be appended and all methods in your
+ * controller will be accessible to the big bad world. This is not recommended!
+ * 
+ * Default: _action
+ */
+$config['action_suffix'] = '_action';
