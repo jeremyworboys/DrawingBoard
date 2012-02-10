@@ -9,6 +9,7 @@
  * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
  * @copyright	Copyright (c) 2012 - date('Y', time()), Complex Compulsions
  * @version     0.1
+ * @filesource
  */
 
 //------------------------------------------------------------------------------
@@ -112,4 +113,3 @@ if (!is_dir(SKETCH_PATH)) {
 //------------------------------------------------------------------------------
 
 require_once(SKETCH_PATH.'core/sketch.php');
-
