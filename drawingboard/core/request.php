@@ -95,7 +95,7 @@ class Request {
 		/**
 		 * If the user doesn't want anything, don't bother.
 		 */
-		if ($count == 0) {
+		if ($length == 0) {
 			return array();
 		}
 

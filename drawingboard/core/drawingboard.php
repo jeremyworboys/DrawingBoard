@@ -73,10 +73,13 @@ try {
 	// We have our core setup, lets start the application shall we!
 	//--------------------------------------------------------------------------
 
-
-	echo "\n\n";
-	print_r(array($Errors, $Config, $Request, $Loader));
-	
+	/**
+	 * Get the requested controller or fallback to the default.
+	 */
+	$controller = $Request->get_step(0);
+	if (empty($controller)) {
+		$controller = $Config->default_controller;
+	}
 
 //------------------------------------------------------------------------------
 
