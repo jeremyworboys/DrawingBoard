@@ -81,6 +81,44 @@ try {
 		$controller = $Config->default_controller;
 	}
 
+	/**
+	 * Get the requested action or fall-back to the default.
+	 */
+	$action = $Request->get_step(1);
+	if (empty($action)) {
+		$action = $Config->default_action;
+	}
+
+	/**
+	 * Add the action suffix to the action.
+	 */
+	$action .= $Config->action_suffix;
+
+	/**
+	 * Check if the controller file exists.
+	*/
+	$controller_path = APP_PATH."controllers/{$controller}.php";
+	if (file_exists($controller_path)) {
+		require_once $controller_path;
+	}
+	else { throw new Exception("Requested controller does not exist: {$controller_path}"); }
+
+	/**
+	 * Ensure the controller is properly structured.
+	*/
+	if (class_exists($controller)) {
+		$Controller = new $controller($params);
+	}
+	else { throw new Exception("Requested controller is invalid: {$controller_path}"); }
+
+	/**
+	 * Call the requested action.
+	*/
+	if (method_exists($Controller, $action)) {
+		$Controller->$action();
+	}
+	else { throw new Exception("Requested action does not exist: {$action} in {$controller_path}"); }
+
 //------------------------------------------------------------------------------
 
 /**
