@@ -42,10 +42,12 @@
  * instantiated classes so loading only actually occurs the first time they are
  * requested.
  * 
- * @access 	public
- * @since 	Version 0.1
- * @param  	string 	$class The name of the class to load / retrieve.
- * @return 	object 	Reference to the requested class.
+ * @access 		public
+ * @since 		Version 0.1
+ * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
+ *
+ * @param  		string 	$class 	The name of the class to load / retrieve.
+ * @return 		object 	Reference to the requested class.
  */
 if (!function_exists('load_core')) {
 	function &load_core($class)

@@ -40,6 +40,11 @@ try {
 	 */
 	require_once(SKETCH_PATH.'core/functions.php');
 
+	/**
+	 * Now that we have our core loader, lets load the loader class
+	 */
+	$Loader = load_core('Loader');
+
 /**
  * We are at the end of the application, if any errors were thrown they'll be
  * caught here for us to handle.
