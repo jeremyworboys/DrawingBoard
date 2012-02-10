@@ -1,11 +1,11 @@
 <?php 
 /**
- * Sketch
+ * DrawingBoard
  *
  * A small lightweight PHP HMVC application framework. Its core design is to be
  * a simple starting point for small web application projects.
  *
- * @package		Sketch
+ * @package		DrawingBoard
  * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
  * @copyright	Copyright (c) 2012 - date('Y', time()), Complex Compulsions
  * @version     0.1
@@ -43,7 +43,7 @@ define('ENVIRONMENT', 'development');
  * Path to root directory.
  * 
  * This directory should contain an "application" folder for the application 
- * specific files and a "sketch" folder for all of the system specific files.
+ * specific files and a "drawingboard" folder for all of the system specific files.
  * 
  * @since 0.1
  */
@@ -59,13 +59,13 @@ define('BASE_PATH', realpath(dirname(__FILE__)).'/');
 define('APP_PATH', BASE_PATH.'application/');
 
 /**
- * Path to sketch directory.
+ * Path to drawingboard directory.
  * 
  * This directory contains all the system specific files.
  * 
  * @since 0.1
  */
-define('SKETCH_PATH', BASE_PATH.'sketch/');
+define('DRAWINGBOARD_PATH', BASE_PATH.'drawingboard/');
 
 //------------------------------------------------------------------------------
 // Set error reporting based on environment
@@ -103,13 +103,13 @@ if (!is_dir(APP_PATH)) {
 	exit('Unable to locate the "application" directory.');
 }
 
-// Finally we'll make sure the sketch directory exists
-if (!is_dir(SKETCH_PATH)) {
-	exit('Unable to locate the "sketch" directory.');
+// Finally we'll make sure the drawingboard directory exists
+if (!is_dir(DRAWINGBOARD_PATH)) {
+	exit('Unable to locate the "drawingboard" directory.');
 }
 
 //------------------------------------------------------------------------------
-// Turn the page, its time to start sketching
+// Turn the page, its time to start drawingboarding
 //------------------------------------------------------------------------------
 
-require_once(SKETCH_PATH.'core/sketch.php');
+require_once(DRAWINGBOARD_PATH.'core/drawingboard.php');

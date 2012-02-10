@@ -1,11 +1,11 @@
 <?php if (!defined('BASE_PATH')) exit('No direct script access allowed');
 /**
- * Sketch
+ * DrawingBoard
  *
  * A small lightweight PHP HMVC application framework. Its core design is to be
  * a simple starting point for small web application projects.
  *
- * @package		Sketch
+ * @package		DrawingBoard
  * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
  * @copyright	Copyright (c) 2012 - date('Y', time()), Complex Compulsions
  * @version     0.1
@@ -17,9 +17,9 @@
 /**
  * Base Functions
  *
- * Defines a basic set of functions required by the Sketch core.
+ * Defines a basic set of functions required by the DrawingBoard core.
  *
- * @package		Sketch
+ * @package		DrawingBoard
  * @subpackage	Core
  * @category 	Base Functions
  * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
@@ -60,7 +60,7 @@ if (!function_exists('load_core')) {
 
 			// Ensure the requested class exists
 			$class_name = strtolower($class);
-			$class_path = SKETCH_PATH."core/{$class}.php";
+			$class_path = DRAWINGBOARD_PATH."core/{$class}.php";
 			if (file_exists($class_path)) {
 				require_once $class_path;
 			}
