@@ -44,7 +44,7 @@ class Config {
 	/**
 	 * Constructor
 	 * 
-	 * Does nothing at this stage.
+	 * Loads the core config file.
 	 * 
 	 * @access 		public
 	 * @since 		Version 0.1
@@ -52,7 +52,7 @@ class Config {
 	 */
 	public function __construct()
 	{
-		
+		$this->load('config');
 	}
 
 	//--------------------------------------------------------------------------
@@ -68,10 +68,39 @@ class Config {
 	 *
 	 * @param  		string	$config_name	The name of the configuration file
 	 * 										to load.
+	 * @param  		string	$overwrite		Whether to overwrite configuration 
+	 * 										settings if they already exist.
 	 */
-	public function load($config_name)
+	public function load($config_name, $overwrite=true)
 	{
+		/**
+		 * Filenames are lowercase, so lets make sure this is.
+		 */
+		$config_name = strtolower($config_name);
 
+		/**
+		 * Ensure the file exists.
+		 */
+		$config_path = APP_PATH."config/{$config_name}.php";
+		if (file_exists($config_path)) {
+			require_once $config_path;
+		}
+		else { throw new Exception("Requested config file does not exist: {$config_path}"); }
+
+		/**
+		 * Take the config variable and merge with existing configuration.
+		 */
+		if ($overwrite) {
+			$this->_config_store = array_merge($this->_config_store, $config);
+		}
+		else {
+			$this->_config_store = array_merge($config, $this->_config_store);
+		}
+
+		/**
+		 * Clear imported $config
+		 */
+		unset($config);
 	}
 
 	//--------------------------------------------------------------------------
@@ -79,7 +108,7 @@ class Config {
 	/**
 	 * [Magic Method] Get
 	 * 
-	 * Overloads the class __get magic method to retrive data from
+	 * Overloads the class __get magic method to retrieve data from
 	 * _config_store.
 	 * 
 	 * @access 		public

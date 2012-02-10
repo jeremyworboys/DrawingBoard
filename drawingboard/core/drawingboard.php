@@ -74,7 +74,7 @@ try {
 	//--------------------------------------------------------------------------
 
 	/**
-	 * Get the requested controller or fallback to the default.
+	 * Get the requested controller or fall-back to the default.
 	 */
 	$controller = $Request->get_step(0);
 	if (empty($controller)) {
