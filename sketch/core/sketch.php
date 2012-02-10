@@ -34,9 +34,12 @@
  * depending on the application environment.
  */
 try {
-	
-	
-	
+
+	/**
+	 * First we load in our base functions
+	 */
+	require_once(SKETCH_PATH.'core/functions.php');
+
 /**
  * We are at the end of the application, if any errors were thrown they'll be
  * caught here for us to handle.
