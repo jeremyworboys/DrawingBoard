@@ -29,7 +29,7 @@
 class Loader {
 
 	/**
-	 * Holds an array of loaded classes.
+	 * Holds an array of loaded models.
 	 * 
 	 * @access 		private
 	 * @since 		Version 0.1
@@ -37,7 +37,7 @@ class Loader {
 	 * 
 	 * @var 		array
 	 */
-	private $_loaded = array();
+	private $_models = array();
 
 	//--------------------------------------------------------------------------
 
@@ -72,7 +72,7 @@ class Loader {
 	 */
 	public function model($model_name, $alias='')
 	{
-
+		
 	}
 
 	//--------------------------------------------------------------------------

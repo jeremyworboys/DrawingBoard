@@ -35,20 +35,49 @@
  */
 try {
 
-	/**
-	 * First we load in our base functions
-	 */
+	//--------------------------------------------------------------------------
+	// First we load in our base functions
+	//--------------------------------------------------------------------------
+
 	require_once(SKETCH_PATH.'core/functions.php');
 
+	//--------------------------------------------------------------------------
+	// Now that we have our core loader, lets load our core classes
+	//--------------------------------------------------------------------------
+
 	/**
-	 * Now that we have our core loader, lets load the loader class
+	 * We want to get the Error class in ASAP so we can handle anything that may
+	 * go wrong
+	 */
+	$Errors = load_core('Errors');
+
+	/**
+	 * Next is the Config class so we have access to user defined settings
+	 */
+	$Config = load_core('Config');
+
+	/**
+	 * Next is the Request class so we have access to the request's parameters
+	 */
+	$Config = load_core('Request');
+
+	/**
+	 * Finally the Loader class, this fellow handles models and views
 	 */
 	$Loader = load_core('Loader');
+
+	//--------------------------------------------------------------------------
+	// We have our core setup, lets start the application shall we!
+	//--------------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------------------
 
 /**
  * We are at the end of the application, if any errors were thrown they'll be
  * caught here for us to handle.
  */
 } catch (Exception $e) {
-	
+	echo $e->getMessage();
 }

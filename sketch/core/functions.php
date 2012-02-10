@@ -46,7 +46,7 @@
  * @since 		Version 0.1
  * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
  *
- * @param  		string 	$class 	The name of the class to load / retrieve.
+ * @param  		string 	$class 		The name of the class to load / retrieve.
  * @return 		object 	Reference to the requested class.
  */
 if (!function_exists('load_core')) {
