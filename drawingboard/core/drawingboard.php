@@ -1,4 +1,3 @@
-
 <?php if (!defined('BASE_PATH')) exit('No direct script access allowed');
 /**
  * DrawingBoard
@@ -39,13 +38,13 @@ echo "<pre>";
 try {
 
 	//--------------------------------------------------------------------------
-	// First we load in our base functions
+	// First we load in our base functions, this includes our core class loader
 	//--------------------------------------------------------------------------
 
 	require_once(DRAWINGBOARD_PATH.'core/functions.php');
 
 	//--------------------------------------------------------------------------
-	// Now that we have our core loader, lets load our core classes
+	// Now that we have our core class loader, lets load our core classes
 	//--------------------------------------------------------------------------
 
 	/**
@@ -70,7 +69,15 @@ try {
 	$Loader = load_core('Loader');
 
 	//--------------------------------------------------------------------------
-	// We have our core setup, lets start the application shall we!
+	// We have our core setup, let's pull in the core controller and model
+	//--------------------------------------------------------------------------
+
+	require_once(DRAWINGBOARD_PATH.'core/controller.php');
+
+	// require_once(DRAWINGBOARD_PATH.'core/model.php');
+
+	//--------------------------------------------------------------------------
+	// We've setup the DrawingBoard, let's get artistic!
 	//--------------------------------------------------------------------------
 
 	/**
@@ -107,7 +114,7 @@ try {
 	 * Ensure the controller is properly structured.
 	*/
 	if (class_exists($controller)) {
-		$Controller = new $controller($params);
+		$Controller = new $controller();
 	}
 	else { throw new Exception("Requested controller is invalid: {$controller_path}"); }
 
