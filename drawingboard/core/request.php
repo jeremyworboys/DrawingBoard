@@ -76,18 +76,17 @@ class Request {
 	 * 									If offset is negative, the sequence will 
 	 * 									start that far from the end of the
 	 * 									array.
-	 * @param		integer	$length		If length is given and is positive, then
-	 * 									the sequence will have up to that many 
-	 * 									elements in it. If the array is shorter 
-	 * 									than the length, then only the available 
-	 * 									array elements will be present. If 
-	 * 									length is given and is negative then the 
-	 * 									sequence will stop that many elements 
-	 * 									from the end of the array. If it is 
-	 * 									omitted, then the sequence will have 
-	 * 									everything from offset up until the end 
-	 * 									of the array.
-	 * @return		mixed	The step as a string if count is 1. Otherwise, an 
+	 * @param		integer	$length		If length is positive, then the sequence
+	 * 									will have up to that many elements in 
+	 * 									it. If the array is shorter than the 
+	 * 									length, then only the available array 
+	 * 									elements will be present. If length is 
+	 * 									given and is negative then the sequence 
+	 * 									will stop that many elements from the 
+	 * 									end of the array. If it is null, then 
+	 * 									the sequence will have everything from 
+	 * 									offset up until the end of the array.
+	 * @return		mixed	The step as a string if length is 1. Otherwise, an 
 	 * 						array of steps as strings.
 	 */
 	public function get_step($offset, $length=1)
@@ -99,7 +98,18 @@ class Request {
 			return array();
 		}
 
-		return array_slice($this->_URI_steps, $offset, $length, true);
+		/**
+		 * Get the set of requested steps.
+		 */
+		$slice = array_slice($this->_URI_steps, $offset, $length);
+
+		/**
+		 * Determine if we should be returning a single item or an array.
+		 */
+		if (count($slice) === 1) {
+			return $slice[0];
+		}
+		return $slice;
 	}
 
 	//--------------------------------------------------------------------------
@@ -157,6 +167,6 @@ class Request {
 		/**
 		 * Split up the result and store it away.
 		 */
-		$_URI_steps = preg_split('/\//', $uri);
+		$this->_URI_steps = preg_split('/\//', $uri);
 	}
 }
