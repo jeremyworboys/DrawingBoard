@@ -42,6 +42,19 @@ class Loader {
 	//--------------------------------------------------------------------------
 
 	/**
+	 * Holds an array of loaded models.
+	 * 
+	 * @access 		private
+	 * @since 		Version 0.1
+	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
+	 * 
+	 * @var 		array
+	 */
+	private $_helpers = array();
+
+	//--------------------------------------------------------------------------
+
+	/**
 	 * Constructor
 	 * 
 	 * Does nothing at this stage.
@@ -71,6 +84,25 @@ class Loader {
 	 * @return 		object 	Reference to the requested model.
 	 */
 	public function model($model_name, $alias='')
+	{
+		
+	}
+
+	//--------------------------------------------------------------------------
+
+	/**
+	 * Load Helper
+	 * 
+	 * Loads a helper giving you access to all the juicy function-y goodness
+	 * contained within.
+	 * 
+	 * @access 		public
+	 * @since 		Version 0.1
+	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
+	 *
+	 * @param  		string 	$helper_name	The name of the helper to load.
+	 */
+	public function helper($model_name)
 	{
 		
 	}

@@ -29,7 +29,8 @@
 class Request {
 
 	/**
-	 * Holds an array of variables set by GET global.
+	 * Holds an array of "steps" in the URI path that we will use to route our 
+	 * application.
 	 * 
 	 * @access 		private
 	 * @since 		Version 0.1
@@ -37,46 +38,34 @@ class Request {
 	 * 
 	 * @var 		array
 	 */
-	private $_get = array();
+	private $_URI_steps = array();
 
 	//--------------------------------------------------------------------------
 
 	/**
-	 * Holds an array of variables set by POST global.
+	 * Constructor
 	 * 
-	 * @access 		private
+	 * Pulls in the required globals and runs "_get_steps" to fill $_URI_steps
+	 * for later methods.
+	 * 
+	 * @access 		public
 	 * @since 		Version 0.1
 	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
-	 * 
-	 * @var 		array
 	 */
-	private $_post = array();
+	public function __construct()
+	{
+		/**
+		 * We are going to need access to the user config, so lets bring it in 
+		 * now.
+		 */
+		global $Config;
+		$this->config = $Config;
 
-	//--------------------------------------------------------------------------
-
-	/**
-	 * Holds an array of variables set by FILES global.
-	 * 
-	 * @access 		private
-	 * @since 		Version 0.1
-	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
-	 * 
-	 * @var 		array
-	 */
-	private $_files = array();
-
-	//--------------------------------------------------------------------------
-
-	/**
-	 * Holds an array of variables set by COOKIE global.
-	 * 
-	 * @access 		private
-	 * @since 		Version 0.1
-	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
-	 * 
-	 * @var 		array
-	 */
-	private $_cookie = array();
+		/**
+		 * Let's prepare our steps so it is done and out of the way.
+		 */
+		$this->_get_steps();
+	}
 
 	//--------------------------------------------------------------------------
 
@@ -89,7 +78,7 @@ class Request {
 	 * @since 		Version 0.1
 	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
 	 */
-	public function __construct()
+	private function _get_steps()
 	{
 
 	}

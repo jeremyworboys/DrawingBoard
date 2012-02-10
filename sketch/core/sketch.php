@@ -1,3 +1,4 @@
+
 <?php if (!defined('BASE_PATH')) exit('No direct script access allowed');
 /**
  * Sketch
@@ -29,6 +30,8 @@
 
 //------------------------------------------------------------------------------
 
+echo "<pre>";
+
 /**
  * Wrap everything in a try catch loop so we can handle exceptions manually 
  * depending on the application environment.
@@ -47,22 +50,22 @@ try {
 
 	/**
 	 * We want to get the Error class in ASAP so we can handle anything that may
-	 * go wrong
+	 * go wrong.
 	 */
 	$Errors = load_core('Errors');
 
 	/**
-	 * Next is the Config class so we have access to user defined settings
+	 * Next is the Config class so we have access to user defined settings.
 	 */
 	$Config = load_core('Config');
 
 	/**
-	 * Next is the Request class so we have access to the request's parameters
+	 * Next is the Request class so we have access to the request's parameters.
 	 */
-	$Config = load_core('Request');
+	$Request = load_core('Request');
 
 	/**
-	 * Finally the Loader class, this fellow handles models and views
+	 * Finally the Loader class, this fellow handles models and views.
 	 */
 	$Loader = load_core('Loader');
 
@@ -71,6 +74,8 @@ try {
 	//--------------------------------------------------------------------------
 
 
+	print_r(array($Errors, $Config, $Request, $Loader));
+	
 
 //------------------------------------------------------------------------------
 
