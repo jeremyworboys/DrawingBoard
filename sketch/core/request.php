@@ -55,13 +55,6 @@ class Request {
 	public function __construct()
 	{
 		/**
-		 * We are going to need access to the user config, so lets bring it in 
-		 * now.
-		 */
-		global $Config;
-		$this->config = $Config;
-
-		/**
 		 * Let's prepare our steps so it is done and out of the way.
 		 */
 		$this->_get_steps();
