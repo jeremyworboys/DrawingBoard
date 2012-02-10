@@ -43,7 +43,8 @@ define('ENVIRONMENT', 'development');
  * Path to root directory.
  * 
  * This directory should contain an "application" folder for the application 
- * specific files and a "drawingboard" folder for all of the system specific files.
+ * specific files and a "drawingboard" folder for all of the system specific
+ * files.
  * 
  * @since 0.1
  */
@@ -109,7 +110,7 @@ if (!is_dir(DRAWINGBOARD_PATH)) {
 }
 
 //------------------------------------------------------------------------------
-// Turn the page, its time to start drawingboarding
+// Step aside, its time to get out the DrawingBoard
 //------------------------------------------------------------------------------
 
 require_once(DRAWINGBOARD_PATH.'core/drawingboard.php');
