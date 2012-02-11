@@ -48,6 +48,6 @@ class Index extends Controller {
 	 */
 	function index_action()
 	{
-		$this->load->view('drawing_board');
+		$this->load->view('drawingboard');
 	}
 }

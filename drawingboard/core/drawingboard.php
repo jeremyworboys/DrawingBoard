@@ -147,6 +147,11 @@ try {
 	}
 	else { throw new Exception("Requested action does not exist: {$action} in {$controller_path}"); }
 
+	/**
+	 * Clean the whistle and close the (buffer if needed).
+	 */
+	@ob_end_clean();
+
 //------------------------------------------------------------------------------
 
 /**
