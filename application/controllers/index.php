@@ -41,7 +41,7 @@ class Index extends Controller {
 	 * This action is called if there is no other action requested. If you want
 	 * a different action to assume this task, update the "default_action"
 	 * option in the /application/config/config.php file.
-	
+	 *
 	 * @access 		public
 	 * @since 		Version 0.1
 	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>

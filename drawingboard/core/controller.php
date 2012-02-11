@@ -28,14 +28,54 @@
 class Controller {
 
 	/**
+	 * An instance of the running controller.
+	 * 
+	 * Makes controller act as singleton design pattern.
+	 * 
+	 * @access 		private
+	 * @since 		Version 0.1
+	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
+	 * 
+	 * @var 		object
+	 */
+	private static $instance;
+
+	/**
 	 * Constructor
 	 * 
-	 * Does nothing at this stage.
+	 * Stores an reference to the running controller to $instance so it can be 
+	 * accessed globally.
 	 * 
 	 * @access 		public
 	 * @since 		Version 0.1
 	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
 	 */
-	function __construct()
-	{}
+	public function __construct()
+	{
+		/**
+		 * Create a global link back to this controller when initialized.
+		 * 
+		 * Makes controller act as singleton design pattern.
+		 */
+		self::$instance =& $this;
+	}
+
+	/**
+	 * Global DrawingBoard
+	 * 
+	 * Gives public access to the running controller (as all controllers extend
+	 * this class).
+	 * 
+	 * Makes controller act as singleton design pattern.
+	 * 
+	 * @access 		public
+	 * @since 		Version 0.1
+	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
+	 * 
+	 * @return		object	An instance of the running controller.
+	 */
+	public static function &global_DB()
+	{
+		return self::instance;
+	}
 }

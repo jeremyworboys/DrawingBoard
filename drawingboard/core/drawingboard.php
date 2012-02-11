@@ -111,6 +111,26 @@ try {
 	else { throw new Exception("Requested controller does not exist: {$controller_path}"); }
 
 	/**
+	 * Now that we have the controller established, let's globalize a reference 
+	 * to it
+	 */
+	/**
+	 * Global DrawingBoard
+	 * 
+	 * Links directly to the global_DB method on the running controller.
+	 * 
+	 * @access 		public
+	 * @since 		Version 0.1
+	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
+	 * 
+	 * @return		object	An instance of the running controller.
+	 */
+	function &global_DB()
+	{
+		return Controller::global_DB();
+	}
+
+	/**
 	 * Ensure the controller is properly structured.
 	*/
 	if (class_exists($controller)) {
