@@ -96,6 +96,6 @@ class Controller {
 	 */
 	public static function &global_DB()
 	{
-		return self::instance;
+		return self::$instance;
 	}
 }
