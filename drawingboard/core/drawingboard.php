@@ -59,12 +59,13 @@ try {
 	$Config = load_core('Config');
 
 	/**
-	 * Next is the Request class so we have access to the request's parameters.
+	 * Next is the Request class so we have access to the request parameters.
 	 */
 	$Request = load_core('Request');
 
 	/**
-	 * Finally the Loader class, this fellow handles models and views.
+	 * Finally the Loader class, this fellow handles models, views and all other
+	 * goodies.
 	 */
 	$Loader = load_core('Loader');
 
@@ -111,8 +112,8 @@ try {
 	else { throw new Exception("Requested controller does not exist: {$controller_path}"); }
 
 	/**
-	 * Now that we have the controller established, let's globalize a reference 
-	 * to it
+	 * Everything is setup for the application to come in, so better make sure
+	 * the application can grab access to the core if it needs to.
 	 */
 	/**
 	 * Global DrawingBoard

@@ -26,6 +26,22 @@
  * @since 		Version 0.1
  */
 
+/**
+ * Loaded Core
+ * 
+ * Create a global variable to store core classes as they are loaded 
+ * pre-controller so the controller can pull them in when it is loaded. This 
+ * variable is unset after the controller has been instantiated.
+ * 
+ * @access 		private
+ * @since 		Version 0.1
+ * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
+ * 
+ * @global		array	Holds core classes an association of names to class 
+ * 						references
+ */
+$GLOBALS['_loaded_core'] = array();
+
 //------------------------------------------------------------------------------
 
 /**
@@ -52,14 +68,14 @@
 if (!function_exists('load_core')) {
 	function &load_core($class)
 	{
-		// Setup a static array to hold the classes as we load them
-		static $_loaded = array();
+		global $_loaded_core;
+
+		$class_name = strtolower($class);
 
 		// Check if we have already loaded the class
-		if (!isset($_loaded[$class])) {
+		if (!isset($_loaded_core[$class_name])) {
 
 			// Ensure the requested class exists
-			$class_name = strtolower($class);
 			$class_path = DRAWINGBOARD_PATH."core/{$class}.php";
 			if (file_exists($class_path)) {
 				require_once $class_path;
@@ -67,10 +83,10 @@ if (!function_exists('load_core')) {
 			else { throw new Exception("Requested core class does not exist: {$class_path}"); }
 
 			// Load the class into our cache
-			$_loaded[$class] = new $class();
+			$_loaded_core[$class_name] = new $class();
 		}
 
 		// Return the class from out cache
-		return $_loaded[$class];
+		return $_loaded_core[$class_name];
 	}
 }

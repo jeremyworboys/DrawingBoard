@@ -28,7 +28,7 @@
 class Controller {
 
 	/**
-	 * An instance of the running controller.
+	 * Instance
 	 * 
 	 * Makes controller act as singleton design pattern.
 	 * 
@@ -36,7 +36,7 @@ class Controller {
 	 * @since 		Version 0.1
 	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
 	 * 
-	 * @var 		object
+	 * @var			object	An instance of the running controller.
 	 */
 	private static $instance;
 
@@ -58,6 +58,26 @@ class Controller {
 		 * Makes controller act as singleton design pattern.
 		 */
 		self::$instance =& $this;
+
+		/**
+		 * Pull in all the classes that have already been initialized.
+		 */
+		global $_loaded_core;
+		while (list($name, $reference) = each($_loaded_core)) {
+			$this->$name = $reference;
+		}
+
+		/**
+		 * Kill the $_loaded_core global for safety and memory management.
+		 */
+		unset($GLOBALS['_loaded_core']);
+
+		/**
+		 * Rename $this->loader to $this->load for convenience and code 
+		 * readability.
+		 */
+		$this->load =& $this->loader;
+		unset($this->loader);
 	}
 
 	/**
