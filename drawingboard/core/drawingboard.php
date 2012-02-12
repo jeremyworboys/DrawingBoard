@@ -143,7 +143,7 @@ try {
 	 * Call the requested action.
 	*/
 	if (method_exists($Controller, $action)) {
-		$Controller->$action();
+		call_user_func_array(array(&$Controller, $action), $Request->get_step(2, null));
 	}
 	else { throw new Exception("Requested action does not exist: {$action} in {$controller_path}"); }
 

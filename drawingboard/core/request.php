@@ -92,13 +92,6 @@ class Request {
 	public function get_step($offset, $length=1)
 	{
 		/**
-		 * If the user doesn't want anything, don't bother.
-		 */
-		if ($length == 0) {
-			return array();
-		}
-
-		/**
 		 * Get the set of requested steps.
 		 */
 		$slice = array_slice($this->_URI_steps, $offset, $length);
@@ -106,7 +99,7 @@ class Request {
 		/**
 		 * Determine if we should be returning a single item or an array.
 		 */
-		if (count($slice) === 1) {
+		if ($length === 1 && count($slice) === 1) {
 			return $slice[0];
 		}
 		return $slice;
