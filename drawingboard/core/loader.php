@@ -159,8 +159,7 @@ class Loader {
 		$params = is_object($params) ? get_params_vars($params) : $params;
 
 		/**
-		 * If $params is not an array yet we're going to have to throw it in the
-		 * garbage.
+		 * If $params is not an array yet I'm gonna have to stop you there.
 		 */
 		if (!is_array($params)) {
 			throw new Exception("View params must be an array. Encountered: ".gettype($params));

@@ -17,7 +17,9 @@
 /**
  * Core Controller
  *
- * This is the core controller that all other controllers should inherit.
+ * This is the core controller that all other controllers should inherit. We are
+ * extending the Loader class so when views are loaded they have full acces back
+ * to the controller.
  *
  * @package		DrawingBoard
  * @subpackage	Core
@@ -25,7 +27,7 @@
  * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
  * @since 		Version 0.1
  */
-class Controller {
+class Controller extends Loader {
 
 	/**
 	 * Instance
@@ -63,7 +65,7 @@ class Controller {
 		 * Pull in all the classes that have already been initialized.
 		 */
 		global $_loaded_core;
-		while (list($name, $reference) = each($_loaded_core)) {
+		foreach ($_loaded_core as $name => $reference) {
 			$this->$name = $reference;
 		}
 
@@ -73,10 +75,9 @@ class Controller {
 		unset($GLOBALS['_loaded_core']);
 
 		/**
-		 * Rename $this->loader to $this->load for convenience and code 
-		 * readability.
+		 * Since we extend the loader class, there is no need to keep a running
+		 * instnce anymore.
 		 */
-		$this->load =& $this->loader;
 		unset($this->loader);
 	}
 
