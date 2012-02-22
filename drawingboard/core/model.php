@@ -42,16 +42,16 @@ class Model extends PDO{
 		/**
 		 * Grab access to the Drawing Board instance.
 		 */
-		$this->DB =& DrawingBoard();
+		$this->DB =& global_DB();
 
 		/**
 		 * Pull in the details we need from the config.
 		 */
-		$type = $this->DB->config['db_type'];
-		$host = $this->DB->config['db_host'];
-		$name = $this->DB->config['db_name'];
-		$user = $this->DB->config['db_user'];
-		$pass = $this->DB->config['db_pass'];
+		$type = $this->DB->config->db_type;
+		$host = $this->DB->config->db_host;
+		$name = $this->DB->config->db_name;
+		$user = $this->DB->config->db_user;
+		$pass = $this->DB->config->db_pass;
 
 		/**
 		 * Create a PDO connection to the database.

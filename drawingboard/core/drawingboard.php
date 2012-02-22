@@ -159,5 +159,5 @@ try {
  * caught here for us to handle.
  */
 } catch (Exception $e) {
-	echo $e->getMessage();
+	echo "Caught Exception: {$e->getMessage()}";
 }

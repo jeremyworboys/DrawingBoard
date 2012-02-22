@@ -52,7 +52,8 @@ class Config {
 	 */
 	public function __construct()
 	{
-		$this->load('config', 'database');
+		$this->load('config');
+		$this->load('database');
 	}
 
 	//--------------------------------------------------------------------------
