@@ -100,7 +100,41 @@ class Loader {
 	 */
 	public function model($model_name, $alias='')
 	{
+		/**
+		 * First we should make sure we haven't already loaded the model. If we 
+		 * have the controller will already have access to it.
+		 */
+		if (!isset($this->_models[$model_name])) {
+			/**
+			 * Check if the model file exists.
+			*/
+			$model_path = APP_PATH."models/{$model_name}.php";
+			if (file_exists($model_path)) {
+				require_once $model_path;
+			}
+			else { throw new Exception("Requested model does not exist: {$model_path}"); }
+
+			/**
+			 * Ensure the model is properly structured then load it into the 
+			 * cache.
+			*/
+			if (class_exists($model)) {
+				$this->_models[$model_name] = new $model();
+			}
+			else { throw new Exception("Requested model is invalid: {$model_path}"); }
+		}
 		
+		/**
+		 * Now that we're sure it is loaded, we better make sure the alias is 
+		 * set.
+		 */
+		$alias = ($alias) ? $alias : $model_name;
+
+		/**
+		 * Finally we attach the loaded model to the controller with the 
+		 * requested alias.
+		 */
+		$this->$alias =& $this->_models[$model_name];
 	}
 
 	//--------------------------------------------------------------------------

@@ -25,13 +25,12 @@
  * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
  * @since 		Version 0.1
  */
-class Model extends PDO{
+class Model extends PDO {
 
 	/**
 	 * Constructor
 	 * 
-	 * Stores an reference to the running controller to $instance so it can be 
-	 * accessed globally.
+	 * Initiates a PDO connection to the database.
 	 * 
 	 * @access 		public
 	 * @since 		Version 0.1
