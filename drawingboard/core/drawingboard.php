@@ -75,7 +75,7 @@ try {
 
 	require_once(DRAWINGBOARD_PATH.'core/controller.php');
 
-	// require_once(DRAWINGBOARD_PATH.'core/model.php');
+	require_once(DRAWINGBOARD_PATH.'core/model.php');
 
 	//--------------------------------------------------------------------------
 	// We've setup the DrawingBoard, let's get artistic!

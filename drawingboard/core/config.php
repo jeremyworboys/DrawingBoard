@@ -44,7 +44,7 @@ class Config {
 	/**
 	 * Constructor
 	 * 
-	 * Loads the core config file.
+	 * Loads the core config files.
 	 * 
 	 * @access 		public
 	 * @since 		Version 0.1
@@ -52,7 +52,7 @@ class Config {
 	 */
 	public function __construct()
 	{
-		$this->load('config');
+		$this->load('config', 'database');
 	}
 
 	//--------------------------------------------------------------------------
