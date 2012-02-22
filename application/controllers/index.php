@@ -48,9 +48,8 @@ class Index extends Controller {
 	 */
 	function index_action()
 	{
+		$this->model('test_model');
 
-		$m = new Model();
-		
 		$this->view('drawingboard');
 	}
 }

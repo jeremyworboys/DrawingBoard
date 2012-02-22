@@ -118,8 +118,8 @@ class Loader {
 			 * Ensure the model is properly structured then load it into the 
 			 * cache.
 			*/
-			if (class_exists($model)) {
-				$this->_models[$model_name] = new $model();
+			if (class_exists($model_name)) {
+				$this->_models[$model_name] = new $model_name();
 			}
 			else { throw new Exception("Requested model is invalid: {$model_path}"); }
 		}
