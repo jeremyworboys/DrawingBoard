@@ -54,7 +54,15 @@ class Model extends PDO {
 
 		/**
 		 * Create a PDO connection to the database.
+		 * 
+		 * TODO: different types of databases have different connection args.
 		 */
 		parent::__construct("{$type}:host=${host};dbname=${name}", $user, $pass);
+
+		/**
+		 * Forces PDO into exception error mode. This is okay as DrawingBoard 
+		 * runs as one giant try/catch statement.
+		 */
+		$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 	}
 }
