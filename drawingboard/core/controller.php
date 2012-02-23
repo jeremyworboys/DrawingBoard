@@ -42,6 +42,8 @@ class Controller extends Loader {
 	 */
 	private static $instance;
 
+	//--------------------------------------------------------------------------
+
 	/**
 	 * Constructor
 	 * 
@@ -80,6 +82,8 @@ class Controller extends Loader {
 		 */
 		unset($this->loader);
 	}
+
+	//--------------------------------------------------------------------------
 
 	/**
 	 * Global DrawingBoard

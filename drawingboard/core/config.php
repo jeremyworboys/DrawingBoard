@@ -29,7 +29,20 @@
 class Config {
 
 	/**
-	 * Holds all of the applications loaded configuration data.
+	 * Holds a list loaded config files.
+	 * 
+	 * @access 		private
+	 * @since 		Version 0.1
+	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
+	 * 
+	 * @var 		array
+	 */
+	private $_loaded_config = array();
+
+	//--------------------------------------------------------------------------
+
+	/**
+	 * Holds all of the application's loaded configuration data.
 	 * 
 	 * @access 		private
 	 * @since 		Version 0.1
@@ -53,7 +66,6 @@ class Config {
 	public function __construct()
 	{
 		$this->load('config');
-		$this->load('database');
 	}
 
 	//--------------------------------------------------------------------------
@@ -80,6 +92,13 @@ class Config {
 		$config_name = strtolower($config_name);
 
 		/**
+		 * Check if this config file has already been loaded.
+		 */
+		if (isset($this->_loaded_config[$config_name]) && !$overwrite) {
+			return;
+		}
+
+		/**
 		 * Ensure the file exists.
 		 */
 		$config_path = APP_PATH."config/{$config_name}.php";
@@ -97,6 +116,11 @@ class Config {
 		else {
 			$this->_config_store = array_merge($config, $this->_config_store);
 		}
+
+		/**
+		 * Mark this config file as loaded.
+		 */
+		$this->_loaded_config[$config_name] = true;
 
 		/**
 		 * Clear imported $config

@@ -44,6 +44,11 @@ class Model extends PDO {
 		$DB =& global_DB();
 
 		/**
+		 * Make sure the database config has been loaded.
+		 */
+		$DB->config->load('database');
+
+		/**
 		 * Pull in the details we need from the config.
 		 */
 		$type = $DB->config->db_type;
