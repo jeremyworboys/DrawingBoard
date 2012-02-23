@@ -48,8 +48,6 @@ class Index extends Protected_controller {
 	 */
 	function index_action()
 	{
-		$this->model('test_model');
-
 		$this->view('drawingboard');
 	}
 }
