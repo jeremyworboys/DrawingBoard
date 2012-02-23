@@ -57,12 +57,20 @@ class Protected_controller extends Controller {
 		parent::__construct();
 
 		/**
+		 * Reset authentication property
+		 */
+		$this->authentication = new stdClass();
+		$this->authentication->authenticated = false;
+
+		/**
 		 * If the user is not authenticated, throw control over to a handle
 		 * method that you can be overridden in custom controllers.
 		 */
 		if (!$this->_check_authentication()) {
+			$this->_clear_authenticated();
 			$this->_not_authenticated();
 		}
+		$this->_update_authentication();
 	}
 
 	//--------------------------------------------------------------------------
@@ -77,6 +85,9 @@ class Protected_controller extends Controller {
 	 * @access 		protected
 	 * @since 		Version 0.1
 	 * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
+	 * 
+	 * @return		bool	Whether the authentication check was successful or 
+	 * 						not.
 	 */
 	protected function _check_authentication()
 	{
