@@ -26,7 +26,7 @@
  * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
  * @since 		Version 0.1
  */
-class Protected_controller extends Controller {}
+class Protected_controller extends Controller {
 
 	/**
 	 * Constructor

@@ -74,6 +74,7 @@ try {
 	//--------------------------------------------------------------------------
 
 	require_once(DRAWINGBOARD_PATH.'core/controller.php');
+	require_once(DRAWINGBOARD_PATH.'core/protected_controller.php');
 
 	require_once(DRAWINGBOARD_PATH.'core/model.php');
 

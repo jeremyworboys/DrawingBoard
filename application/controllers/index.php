@@ -30,7 +30,7 @@
  * @author		Jeremy Worboys <jeremy@complexcompulsions.com>
  * @since 		Version 0.1
  */
-class Index extends Controller {
+class Index extends Protected_controller {
 
 	/**
 	 * Index Action
